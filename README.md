@@ -32,3 +32,12 @@ git restore --staged myfile.txt
 
 Doing this will move the changes from staging area to working area. Now I can discard the changes from the working area by using `git restore <filename>` as before.
 
+An easy real life analogy to understand about the working area, staging area and the repository :
+
+Think of a mathematics examination. We have an answer sheet and a rough sheet. Now in order to solve the first question, we do some rough work on the rough sheet. That is the working area. Any changes or work that we do in this rough area may/may not work.
+
+What we need to submit to the teacher is the answer sheet, so we copy the solution from the rough sheet to the answer sheet. The answer sheet is the working area.
+
+After the exam gets over, the invigilators click a photograph of the answer sheet for their future records. This is what the repository is.
+
+11. `git diff <commit-id1> <commit-id2>` : Considering commit-id1 to be the previous commit and commit-id2 to be the further commit, it tells the difference between the two commits in terms of additions and deletions of code.
