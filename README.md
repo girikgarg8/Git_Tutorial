@@ -55,3 +55,5 @@ In the command `git remote add origin`, 'origin' just refers to a connection bet
 16. `git remote rename <oldname> <newname> ` : this command renames the remote connection
 
 17. `git pull <remote name> <branch name>`: downloads latest changes from the branch of the mentioned remote in the local repository.
+
+Merge conflicts is something we need to know how to deal with.
