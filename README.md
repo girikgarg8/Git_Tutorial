@@ -41,3 +41,10 @@ What we need to submit to the teacher is the answer sheet, so we copy the soluti
 After the exam gets over, the invigilators click a photograph of the answer sheet for their future records. This is what the repository is.
 
 11. `git diff <commit-id1> <commit-id2>` : Considering commit-id1 to be the previous commit and commit-id2 to be the further commit, it tells the difference between the two commits in terms of additions and deletions of code.
+
+12. `git remote` --> Links the local repository and Github repository, which allows us to push to, and pull from the Github repository.
+
+Using git remote command without having a remote origin wouldn't print anything because the remote is not set.
+
+In the command `git remote add origin`, 'origin' just refers to a connection between the local Git repository and the remote repository. Technically, we can use any name for this connection, 'origin' is just a common name for this connection.
+
