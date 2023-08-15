@@ -65,3 +65,5 @@ In the command `git remote add origin`, 'origin' just refers to a connection bet
     - git push
 
 Important thing to know: Before pulling from remote, the working area and staging area should be clean on the local repository. So, we need to either commit the changes on local or stash them, before pulling.
+
+Merge conflicts are a very common scenario.
