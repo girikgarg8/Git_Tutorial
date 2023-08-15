@@ -12,7 +12,7 @@
 
 7. `commit` --> git commit is a particular version of the project. It captures a snapshot of the project's staged changes and creates a version out of it.
 
-8. `git commit` --> registers staging changes to a commit 
+8. `git commit` --> registers staging changes to a commit. 
 
 9. `git log` --> lists down all the commits of the repository. If you want to exit out of git log, press 'q'.
 
@@ -42,7 +42,7 @@ After the exam gets over, the invigilators click a photograph of the answer shee
 
 11. `git diff <commit-id1> <commit-id2>` : Considering commit-id1 to be the previous commit and commit-id2 to be the further commit, it tells the difference between the two commits in terms of additions and deletions of code.
 
-12. `git remote ` --> lists down all the remote connection names
+12. `git remote ` --> lists down all the remote connection names.
 
 13. Remote connection --> It helps you to link two git repositories for uploading and downloading changes from each other otherwise.
 
