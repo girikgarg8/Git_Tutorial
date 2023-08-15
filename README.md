@@ -56,6 +56,10 @@ In the command `git remote add origin`, 'origin' just refers to a connection bet
 
 17. `git pull <remote name> <branch name>`: downloads latest changes from the branch of the mentioned remote in the local repository.
 
+Merge conflicts is something we need to know how to deal with.
+
+Merge conflicts is something we need to know how to deal with.
+
 ### Recommended practice to do
 
     - make changes
