@@ -1,7 +1,9 @@
 Git internally uses :
 
+``` 
 1. Hashing
 2. Graph/Tree Data Structure
+```
 
 ==> Git is like key-value store.
 
