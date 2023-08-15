@@ -42,9 +42,17 @@ After the exam gets over, the invigilators click a photograph of the answer shee
 
 11. `git diff <commit-id1> <commit-id2>` : Considering commit-id1 to be the previous commit and commit-id2 to be the further commit, it tells the difference between the two commits in terms of additions and deletions of code.
 
-12. `git remote` --> Links the local repository and Github repository, which allows us to push to, and pull from the Github repository.
+12. `git remote ` --> lists down all the remote connection names
 
-Using git remote command without having a remote origin wouldn't print anything because the remote is not set.
+13. Remote connection --> It helps you to link two git repositories for uploading and downloading changes from each other otherwise.
+
+14. `git remote add <name of remote> <link of the remote> ` : this command helps us to add a new link to the remote repo and give a name to it.
 
 In the command `git remote add origin`, 'origin' just refers to a connection between the local Git repository and the remote repository. Technically, we can use any name for this connection, 'origin' is just a common name for this connection.
+
+15. `git remote rm <name of remote> `: this command deletes a remote connection
+
+16. `git remote rename <oldname> <newname> ` : this command renames the remote connection
+
+
 
