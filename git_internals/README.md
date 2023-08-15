@@ -15,4 +15,4 @@ git compresses the data in a blob (binary large object), and stores some metadat
 
 Structure of how git stores the data:
 
-![Git internal memory representation](Internal_Git_Memory_Representation.png)
+![Git internal memory representation](Internal_Git_Representation.png)
