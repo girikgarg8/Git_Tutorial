@@ -71,3 +71,19 @@ Merge conflicts is something we need to know how to deal with.
 Important thing to know: Before pulling from remote, the working area and staging area should be clean on the local repository. So, we need to either commit the changes on local or stash them, before pulling.
 
 Merge conflicts are a very common scenario.
+
+### Notes from Git continued video
+
+Concept of upstream and downstream in Git: 
+
+In Git, "upstream" refers to the repository that you forked from, or the "main" repository that you are working on. "Downstream" is the repository that you created from the upstream repository, or the repository that you are contributing to.When you fork a repository, you create a copy of the repository on your own GitHub account. This copy is called the "downstream" repository. You can then make changes to your own copy of the repository and submit a "pull request" to the "upstream" repository, asking the maintainers to review and merge your changes.When you clone a repository, you make a copy of the repository on your local machine. This copy is also called the "downstream" repository. You can then make changes to your local copy of the repository and push them to the "upstream" repository.In both cases, the "upstream" repository is the original repository that you forked or cloned, and the "downstream" repository is the copy that you created.
+
+Q. How to ensure that the downstream repository, or the repository set up on our local is up to date with all the commits from the upstream repository?
+
+A. 
+
+1. Set the upstream connection, by creating `git remote add upstream <upstream-URL>`.
+
+2. Pull from the upstream repository by using `git pull upstream <branch-name>`. For example, using `git pull upstream main` will pull the changes from the `main` branch of upstream repo, and attempt to merge it with the current local branch. If in case the branch name is not specified, the code from the default branch of the repository is fetched. (which is usually the main or the master branch)
+
+3. If there are any merge conflicts, we will be prompted to resolve those. Else, we can proceed.
