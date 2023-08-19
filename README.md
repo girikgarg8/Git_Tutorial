@@ -87,3 +87,34 @@ A.
 2. Pull from the upstream repository by using `git pull upstream <branch-name>`. For example, using `git pull upstream main` will pull the changes from the `main` branch of upstream repo, and attempt to merge it with the current local branch. If in case the branch name is not specified, the code from the default branch of the repository is fetched. (which is usually the main or the master branch)
 
 3. If there are any merge conflicts, we will be prompted to resolve those. Else, we can proceed.
+
+In the command `git clone <remote URL>` is used to create a local copy of a remote repository, Git typically clones only the default branch (often named "main" or "master") from the remote repository. This behavior is to keep the initial clone lightweight and to avoid downloading the entire commit history and all branches unless explicitly requested.
+
+However, if we have a usecase to clone only a specific branch of a repository, we can do so by using `git clone --branch branch_name --single-branch <repository_url>`. For example, `git clone --branch development --single-branch https://github.com/ `
+
+If we have a usecase to clone all the branches of the, we can do so by using `git clone --mirror <repository URL>`
+
+
+## Fixing mistakes in Git
+
+If there's a situation that a file is present in both the working area and the staging area, and we use the command `git checkout -- <filename>`, then all the changes made in the working area are lost and only the changes from the staging area remain.
+
+More formally, The command git checkout -- new_file.txt is used to discard any uncommitted changes made to the file new_file.txt in your working directory and replace it with the version of the file from the most recent commit (the version in the HEAD).
+
+The `git clean` command: This command is used to discard all the untracked files in the working area. 
+
+![Git_clean](Git_clean.png)
+
+Q. How to revert changes from a previous commit for a specific file or for all files?
+
+A. 
+
+1. Find the Commit: First, you need to find the commit that contains the version of the file you want to revert to. You can use git log to view the commit history and find the commit hash of the desired commit.
+
+2. Once you have the commit hash, you can use git checkout to revert the file to that specific commit's state. The command syntax is as follows: 
+
+`git checkout <commit_hash> -- <file_path>` 
+
+If in case, we want to revert all the files to previous commit, we can do say by using the syntax `git checkout <commit_hash>`
+
+![]()
