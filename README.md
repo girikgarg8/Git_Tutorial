@@ -105,6 +105,12 @@ The `git clean` command: This command is used to discard all the untracked files
 
 ![Git_clean](Git_clean.png)
 
+There are several options too available with `git clean`. Let's explore some of them:
+
+1. --dry-run :  This flag is used when we first want to see which untracked files will be removed from the working directory, and not to actually delete those files.
+
+2. -d : This flag is used when we want to include the untracked directories as well.
+
 Q. How to revert changes from a previous commit for a specific file or for all files?
 
 A. 
@@ -117,4 +123,66 @@ A.
 
 If in case, we want to revert all the files to previous commit, we can do say by using the syntax `git checkout <commit_hash>`
 
-![]()
+![Git_checkout_commit_part1](Git_checkout_commit_part1.png)
+![Git_checkout_commit_part2](Git_checkout_commit_part2.png)
+
+**Important note about git checkout**
+
+When we use the git checkout command to bring back changes from a previous commit, we also move the HEAD pointer to the previous commit.
+
+This brings us to a point where the HEAD pointer is not directly pointing to a branch (which is the usual behavior), but is pointing to a commit, this is known as 'detached HEAD' state.
+
+![Git_checkout_detached_head_state](Git_checkout_detached_HEAD_state.png)
+
+There is a risk with using detached head state, let's understand it with the help of an example. Let's say there is a scenario that there are commits numbered 1 to 5 in the commit history. Let's also say that currently the master points to the 5th commit and HEAD points to the master. Now if we want to checkout to the 2nd commit and use `git checkout <2nd commit ID>`, the problem is that there is no reference to the 3rd and the 4th commit (it is similar to losing the address of a node in a linked list). These would become dangling commits, and would be cleaned up by the Git GC. 
+
+But the bottom line is that the master branch still points to the 5th commit, if we want to move back the HEAD pointer to the master, we can do so by using `git checkout master`. Note, that if we move the HEAD pointer to the master (which is in turn is pointing to the 5th commit), we don't require a reference to the 3rd or 4th commit. They would appear in the commit history, because each commit stores information about its parent commit.
+
+I can see two risks in the detached HEAD state:
+
+1. If the master pointer, is by mistake moved to some other commit, then the commit history would be lost.
+
+2. Any new commits you make in a detached HEAD state won't be part of a branch. They'll just hang in the commit history without any reference, and they might eventually get garbage collected if not associated with a branch or tag. If you want to continue working on the changes made in a detached HEAD state, it's essential to create a new branch before making new commits. 
+
+This is how the commit history looks like, in case of detached HEAD:
+
+![Git_checkout_detached_HEAD_state](Git_checkout_detached_HEAD_state.png)
+
+In order to see the commit history since only for a particular duration, we can do so by using `git log --since="yesterday"` , `git log --since="5 minute ago"`or `git log --since=10.minute` etc
+
+In order to search for a commit with a particular commit message, we can use `git log --grep <search string> `
+
+Usecases of ^ (tilde) and ~ (caret) in git log : 
+
+1. The ~ symbol is used to reference ancestors of a commit. You can specify how many generations of ancestors you want to include in the log. For example, ~1 refers to the immediate parent, ~2 refers to the grandparent, and so on.
+
+2. The ^ symbol is used to reference the parent of a commit. It is used to  specify the immediate parent(s) of a commit. If a commit has multiple parents (in the case of a merge commit), we can use ^ followed by a number to indicate which parent to reference.
+
+Let's understand point 2 in more detail.
+
+
+A merge commit is a special type of commit in Git that represents the result of merging one branch into another. It's created when you combine changes from one branch (the source branch) into another branch (the target branch). Merge commits have two or more parent commits, where each parent represents one of the branches being merged.
+
+There's another important point worth knowing: merge commits are only created when there are merge conflicts while merging two branches. 
+
+No, a merge commit is not created if there are no merge conflicts and the merge can be performed as a "fast-forward" merge. In a fast-forward merge, Git simply moves the branch pointer of the target branch to the same commit as the source branch because there are no divergent changes to merge.
+
+For example, 
+
+```
+# Create a new branch and make some changes
+git checkout -b feature-branch
+# Make changes and commit
+git commit -m "Added feature"
+
+# Switch to the main branch
+git checkout main
+
+# Merge the feature branch (fast-forward)
+git merge feature-branch
+
+In this scenario, if there are no conflicting changes between feature-branch and main, the merge operation will be a fast-forward merge. It won't create a merge commit; instead, it will move the main branch pointer to the same commit as feature-branch.
+
+```
+
+
