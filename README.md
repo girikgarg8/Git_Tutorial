@@ -1,5 +1,3 @@
-This is a corrupt file.
-
 1. `git init` --> Powers your folder to be managed by Git, and initialises a new empty repository. It also creates a .git folder that has also the relevant logic to manage different versions of your project.
 
 2. `Working Area` --> There can be a bunch of files that are not currently handled by git. It means that changes done or to be done in those files are not maanged by git yet. A file which is in working area is considered to be not in the staging area. When we do `git status` and we see a bunch of 'untracked files' then these are actually called to be in the working area.
@@ -186,5 +184,6 @@ git merge feature-branch
 In this scenario, if there are no conflicting changes between feature-branch and main, the merge operation will be a fast-forward merge. It won't create a merge commit; instead, it will move the main branch pointer to the same commit as feature-branch.
 
 ```
+
 
 
