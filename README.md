@@ -158,32 +158,31 @@ Usecases of ^ (tilde) and ~ (caret) in git log :
 
 2. The ^ symbol is used to reference the parent of a commit. It is used to  specify the immediate parent(s) of a commit. If a commit has multiple parents (in the case of a merge commit), we can use ^ followed by a number to indicate which parent to reference.
 
+The symbols caret and tilde are frequently used in commands like `git reset` etc when we want to move the branch pointer to point to the 1st or 2nd ancestor etc
+
 Let's understand point 2 in more detail.
 
+A merge commit is a special type of commit in Git that represents the result of merging one branch into another. There is an interesting explanation around when does Git do fast-forward merge and when does Git create merge commit. Let's understand this with the help of diagrams. 
 
-A merge commit is a special type of commit in Git that represents the result of merging one branch into another. It's created when you combine changes from one branch (the source branch) into another branch (the target branch). Merge commits have two or more parent commits, where each parent represents one of the branches being merged.
+Let's understand the two scenarios :
 
-There's another important point worth knowing: merge commits are only created when there are merge conflicts while merging two branches. 
+1. When we checkout a new branch in Git, we are actually creating a new pointer to the same commit (let's assume the commit on the branch master, for discussion purpose, referred to the commit with ID c1). Now, it can be a possibility that the feature branch diverges from commit c1 and the feature branch doesn't point to commit 1, but the master branch still points to commit 1. Now let's say we want to merge the feature branch into the master, so in this case the master pointer will move from the commit c1 to the latest commit on the feature_branch. This is formally known as **fast forward merge, in such scenarios no merge commit is created**.
 
-No, a merge commit is not created if there are no merge conflicts and the merge can be performed as a "fast-forward" merge. In a fast-forward merge, Git simply moves the branch pointer of the target branch to the same commit as the source branch because there are no divergent changes to merge.
+Before fast forward merge:
 
-For example, 
+![Before_fast_forward_merge](Before_fast_forward_merge.png)
 
-```
-# Create a new branch and make some changes
-git checkout -b feature-branch
-# Make changes and commit
-git commit -m "Added feature"
+After fast foward merge:
 
-# Switch to the main branch
-git checkout main
+![After_fast_forward_merge](After_fast_forward_merge.png)
 
-# Merge the feature branch (fast-forward)
-git merge feature-branch
+2. Scenario 2: Let's say we checkout a new branch feature_branch from the master branch, originally both of them are pointing to commit c1. Now let's say both the branches diverge from commit c1, so the master branch points to some commit c2 and the feature branch is pointing to commit c3. Now if we want to merge the changes from feature branch into master, then a merge commit is created. This merge commit has parent commits as both the branches from where it is merged.
 
-In this scenario, if there are no conflicting changes between feature-branch and main, the merge operation will be a fast-forward merge. It won't create a merge commit; instead, it will move the main branch pointer to the same commit as feature-branch.
+Before merge commit:
 
-```
+![Before_merge_commit](Before_merge_commit.png)
 
+After merge commit:
 
+![After_merge_commit](After_merge_commit.png)
 
